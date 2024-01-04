@@ -3,20 +3,20 @@ package com.sarang.sarangback.common;
 public class ResponseMessage {
     // HTTP Status 200
     public static final String SUCCESS = "Success.";
-    String VALIDATION_FAILED = "Validation failed.";
-    String DUPLICATE_EMAIL = "Duplicate email.";
-    String DUPLICATE_NICKNAME = "Duplicate nickname.";
-    String DUPLICATE_TEL_NUMBER = "Duplicate tel number.";
-    String NOT_EXISTED_USER = "This user does not exist.";
-    String NOT_EXISTED_BOARD = "This board does not exist.";
+    public static final String VALIDATION_FAILED = "Validation failed.";
+    public static final String DUPLICATE_EMAIL = "Duplicate email.";
+    public static final String DUPLICATE_NICKNAME = "Duplicate nickname.";
+    public static final String DUPLICATE_TEL_NUMBER = "Duplicate tel number.";
+    public static final String NOT_EXISTED_USER = "This user does not exist.";
+    public static final String NOT_EXISTED_BOARD = "This board does not exist.";
 
     // HTTP Status 401
-    String SIGN_IN_FAIL = "Login information mismatch.";
-    String AUTHORIZATION_FAIL = "Authorization failed.";
+    public static final String SIGN_IN_FAIL = "Login information mismatch.";
+    public static final String AUTHORIZATION_FAIL = "Authorization failed.";
 
     // HTTP Status 403
-    String NO_PERMISSION = "Do not have permission.";
+    public static final String NO_PERMISSION = "Do not have permission.";
 
     // HTTP Status 500
-    String DATABASE_ERROR = "Database error.";
+    public static final String DATABASE_ERROR = "Database error.";
 }

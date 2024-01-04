@@ -28,16 +28,20 @@ public class WebSecurityConfig {
     @Bean
     protected SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
+
                 .cors().and()
-                .csrf().disable()
-                .httpBasic().disable()
+                .csrf().disable() // cors설정과 csrf보호를 비활성화 한다.
+                .httpBasic().disable() // HTTP 기본인증을 비활성화 한다.
+                // 세션 생성 정책을 STATELESS로 설정하여 세션을 사용하지 않음을 명시한다.
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/api/v1/auth/**").permitAll()
                 .requestMatchers("/api/v1/search/**", "/file/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/board/**", "/api/v1/user/*").permitAll()
+                // 모든 요청에 대해 인증을 요구한다.
                 .anyRequest().authenticated().and()
+                // 인증 실패 시 처리방법 정의
                 .exceptionHandling().authenticationEntryPoint(new FailedAuthenticationEntryPoint());
 
         httpSecurity
@@ -49,6 +53,10 @@ public class WebSecurityConfig {
 
 class FailedAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
+    /*
+     * 인증 실패 시 실행되며, 응답에 대한 타입과 상태코드를 설정하고,
+     * 실패 메시지를 출력한다.
+     */
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
             AuthenticationException authException) throws IOException, ServletException {
