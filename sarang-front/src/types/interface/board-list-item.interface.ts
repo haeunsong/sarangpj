@@ -3,10 +3,12 @@ export default interface BoardListItem {
     title: string;
     content: string;
     boardTitleImage: string | null;
+
     favoriteCount: number;
     commentCount: number;
     viewCount : number;
+
     writeDatetime : string;
     writerNickname: string;
-    WriterProfileImage: string | null;
+    writerProfileImage: string | null;
 }
