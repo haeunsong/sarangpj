@@ -1,11 +1,11 @@
 import { BoardListItem } from "types/interface"
 
-const latestBoardListMock: BoardListItem[] = [
+const top3BoardListMock: BoardListItem[] = [
     {
         boardNumber: 1,
         title: '오늘 점심 뭐먹지 맛있는게 먹고 싶은데 추천 부탁 이이이이이잉 ',
         content: '오늘 점심 뭐먹지 맛있는게 먹고 싶은데 추천 부탁 이이이이이잉 오늘 점심 뭐먹지 맛있는게 먹고 싶은데 추천 부탁 이이이이이잉 오늘 점심 뭐먹지 맛있는게 먹고 싶은데 추천 부탁 이이이이이잉 ',
-        boardTitleImage: 'https://cdn.imweb.me/upload/S20170119587fc1996d25a/5a540781d256c.gif',
+        boardTitleImage: 'https://img.freepik.com/free-vector/mobile-background-with-starry-sky-and-purple-tones_79603-550.jpg?w=360&t=st=1704692258~exp=1704692858~hmac=26ce5b523b051f419fd2e2869328a95c726381cdca1b0e919cd642051594b5ef',
     
         favoriteCount: 0,
         commentCount: 0,
@@ -43,34 +43,7 @@ const latestBoardListMock: BoardListItem[] = [
         writerNickname: '안녕하세요나는주코야키',
         writerProfileImage:  null,
     },
-    {
-        boardNumber: 1,
-        title: '오늘 점심 뭐먹지 맛있는게 먹고 싶은데 추천 부탁 이이이이이잉 ',
-        content: '오늘 점심 뭐먹지 맛있는게 먹고 싶은데 추천 부탁 이이이이이잉 오늘 점심 뭐먹지 맛있는게 먹고 싶은데 추천 부탁 이이이이이잉 오늘 점심 뭐먹지 맛있는게 먹고 싶은데 추천 부탁 이이이이이잉 ',
-        boardTitleImage: null,
-    
-        favoriteCount: 0,
-        commentCount: 0,
-        viewCount : 0,
-    
-        writeDatetime : '2023.08.18. 00:54:27',
-        writerNickname: '안녕하세요나는주코야키',
-        writerProfileImage:  null,
-    },
-    {
-        boardNumber: 1,
-        title: '오늘 점심 뭐먹지 맛있는게 먹고 싶은데 추천 부탁 이이이이이잉 ',
-        content: '오늘 점심 뭐먹지 맛있는게 먹고 싶은데 추천 부탁 이이이이이잉 오늘 점심 뭐먹지 맛있는게 먹고 싶은데 추천 부탁 이이이이이잉 오늘 점심 뭐먹지 맛있는게 먹고 싶은데 추천 부탁 이이이이이잉 ',
-        boardTitleImage: null,
-    
-        favoriteCount: 0,
-        commentCount: 0,
-        viewCount : 0,
-    
-        writeDatetime : '2023.08.18. 00:54:27',
-        writerNickname: '안녕하세요나는주코야키',
-        writerProfileImage:  null,
-    },
+
 
 ]
-export default latestBoardListMock;
+export default top3BoardListMock;
