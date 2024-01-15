@@ -9,7 +9,7 @@ const latestBoardListMock: BoardListItem[] = [
     
         favoriteCount: 0,
         commentCount: 0,
-        viewCount : 0,
+        viewCount : 0, 
     
         writeDatetime : '2023.08.18. 00:54:27',
         writerNickname: '안녕하세요나는주코야키',
