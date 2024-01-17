@@ -9,9 +9,13 @@ import "./style.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { AUTH_PATH, MAIN_PATH, SEARCH_PATH, USER_PATH } from "constant";
 import { useCookies } from "react-cookie";
+import useLoginUserStore from "stores/login-user.store";
 
 // 헤더 레이아웃
 export default function Header() {
+  // state: 로그인 유저 상태
+  const { loginUser, setLoginUser, resetLoginUser } = useLoginUserStore();
+
   // state: cookie 상태 ($ npm i react-cookie)
   const [cookies, setCookies] = useCookies();
 
@@ -104,17 +108,40 @@ export default function Header() {
     );
   };
 
-  // component: 로그인 버튼 컴포넌트 렌더링
-  const LoginMyPageButton = () => {
+  // component: 로그인 또는 마이페이지 버튼 컴포넌트 렌더링
+  const MyPageButton = () => {
+    // state: userEmail path variable 상태
+    const { userEmail } = useParams();
+
     // event handler: 마이페이지 버튼 클릭 이벤트 처리 함수
     const onMyPageButtonClickHandler = () => {
-      navigate(USER_PATH(""));
+      if (!loginUser) return;
+      const { email } = loginUser; // 근데 왜 여기서 loginUser.email 로 하지 않는거지..?!
+      navigate(USER_PATH(email));
     };
 
     // event handler: 로그인 버튼 클릭 이벤트 처리 함수
     const onSignInButtonClickHandler = () => {
       navigate(AUTH_PATH());
     };
+
+    // event handler: 로그아웃 버튼 클릭 이벤트 처리 함수
+    const onSignOutButtonClickHandler = () => {
+      resetLoginUser();
+      navigate(MAIN_PATH());
+    };
+
+    // render: 로그아웃 버튼 컴포넌트 렌더링
+    // 로그인 되어있고, 마이페이지 화면이면, 로그아웃 버튼.
+    if (isLogin && userEmail === loginUser?.email) {
+      return (
+        <div className="white-button" onClick={onSignOutButtonClickHandler}>
+          {"로그아웃"}
+        </div>
+      );
+    }
+
+    // 로그인 되어있으면 마이페이지 버튼 보이게
     if (isLogin) {
       // render: 마이페이지 버튼 컴포넌트 렌더링
       return (
@@ -123,6 +150,7 @@ export default function Header() {
         </div>
       );
     }
+
     // render: 로그인 버튼 컴포넌트 렌더링
     return (
       <div className="black-button" onClick={onSignInButtonClickHandler}>
@@ -142,7 +170,7 @@ export default function Header() {
         </div>
         <div className="header-right-box">
           <SearchButton />
-          <LoginMyPageButton />
+          <MyPageButton />
         </div>
       </div>
     </div>
