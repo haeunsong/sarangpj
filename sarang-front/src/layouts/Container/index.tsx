@@ -10,7 +10,6 @@ export default function Container() {
 
   return (
     <>
-      {pathname}
       <Header />
       <Outlet />
       {/* pathname이 /auth 아닐 때만 footer 적용 */}
