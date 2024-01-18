@@ -12,6 +12,10 @@
 }
 body {
   margin: 0;
+  
+  /* header 설정할 때 추가함 */
+  min-width: 1440px;
+
   font-family: 'Pretendard-Regular';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

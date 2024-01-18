@@ -6,21 +6,48 @@ import React, {
   useEffect,
 } from "react";
 import "./style.css";
-import { useNavigate, useParams } from "react-router-dom";
-import { AUTH_PATH, MAIN_PATH, SEARCH_PATH, USER_PATH } from "constant";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  BOARD_PATH,
+  AUTH_PATH,
+  BOARD_DETAIL_PATH,
+  BOARD_UPDATE_PATH,
+  BOARD_WRITE_PATH,
+  MAIN_PATH,
+  SEARCH_PATH,
+  USER_PATH,
+} from "constant";
 import { useCookies } from "react-cookie";
 import useLoginUserStore from "stores/login-user.store";
+import { useBoardStore } from "stores";
 
 // 헤더 레이아웃
 export default function Header() {
   // state: 로그인 유저 상태
   const { loginUser, setLoginUser, resetLoginUser } = useLoginUserStore();
 
+  // state: path 상태
+  const { pathname } = useLocation();
+
   // state: cookie 상태 ($ npm i react-cookie)
   const [cookies, setCookies] = useCookies();
 
   // state: 로그인 상태
   const [isLogin, setLogin] = useState<boolean>(false);
+
+  const isAuthPage = pathname.startsWith(AUTH_PATH());
+  const isMainPage = pathname === MAIN_PATH();
+  const isSearchPage = pathname.startsWith(SEARCH_PATH(""));
+  const isBoardDetailPage = pathname.startsWith(
+    BOARD_PATH() + "/" + BOARD_DETAIL_PATH("")
+  );
+  const isBoardWritePage = pathname.startsWith(
+    BOARD_PATH() + "/" + BOARD_WRITE_PATH()
+  );
+  const isBoardUpdatePage = pathname.startsWith(
+    BOARD_PATH() + "/" + BOARD_UPDATE_PATH("")
+  );
+  const isUserPage = pathname.startsWith(USER_PATH(""));
 
   // function: 네비게이트 함수
   const navigate = useNavigate();
@@ -30,7 +57,7 @@ export default function Header() {
     navigate(MAIN_PATH());
   };
 
-  // component: 검색 버튼 컴포넌트
+  // component: SEARCH 버튼 컴포넌트
   const SearchButton = () => {
     // state: 검색어 버튼 요소 참조 상태
     const searchButtonRef = useRef<HTMLDivElement | null>(null);
@@ -46,7 +73,10 @@ export default function Header() {
     const { searchWord } = useParams();
 
     // event handler: 검색어 변경 이벤트 처리 함수
+    // 검색창에 값을 입력하고 버튼 누르면 그 검색 페이지로 넘어가고,
+    // 그 검색어값이 그대로 남아있다.
     const onSearchButtonClickHandler = () => {
+      // 기본적으로 항상 실행(status 기본이 false라서)
       if (!status) {
         setStatus(!status);
         return;
@@ -55,7 +85,6 @@ export default function Header() {
     };
 
     // effect: 검색어 path variable 변경될 때마다 실행될 함수
-    //
     useEffect(() => {
       if (searchWord) {
         setWord(searchWord);
@@ -73,7 +102,7 @@ export default function Header() {
       searchButtonRef.current?.click();
     };
 
-    // event handler: 검색 버튼 클릭 이벤트 처리 함수
+    // event handler: 검색 버튼 change 이벤트 처리 함수
     const onSearchWordChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
       setWord(e.target.value);
     };
@@ -159,6 +188,19 @@ export default function Header() {
     );
   };
 
+  // component: UPLOAD 버튼 컴포넌트
+  const UploadButton = () => {
+    // state: 게시물 상태
+    const { title, content, boardImageFileList, resetBoard } = useBoardStore();
+
+    // event handler: 업로드 버튼 클릭 이벤트 처리 함수
+    const onUploadButtonClickHandler = () => {};
+
+    // 제목과 내용 모두에 내용이 들어있을 때에만 업로드 버튼 활성화
+    if (title && content) return <div className="black-button">{"업로드"}</div>;
+
+    return <div className="disable-button">{"업로드"}</div>;
+  };
   return (
     <div id="header">
       <div className="header-container">
@@ -169,8 +211,13 @@ export default function Header() {
           <div className="header-logo">{"Sarang Board"}</div>
         </div>
         <div className="header-right-box">
-          <SearchButton />
-          <MyPageButton />
+          {(isAuthPage || isMainPage || isSearchPage || isBoardDetailPage) && (
+            <SearchButton />
+          )}
+          {(isMainPage || isSearchPage || isBoardDetailPage || isUserPage) && (
+            <MyPageButton />
+          )}
+          {(isBoardWritePage || isBoardUpdatePage) && <UploadButton />}
         </div>
       </div>
     </div>
