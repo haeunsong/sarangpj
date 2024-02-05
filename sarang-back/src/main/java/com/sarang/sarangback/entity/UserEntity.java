@@ -5,11 +5,15 @@ import com.sarang.sarangback.dto.request.auth.SignUpRequestDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity(name = "user")
 @Table(name = "user")
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserEntity {
 
     @Id

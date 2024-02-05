@@ -1,5 +1,6 @@
 package com.sarang.sarangback.dto.request.auth;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

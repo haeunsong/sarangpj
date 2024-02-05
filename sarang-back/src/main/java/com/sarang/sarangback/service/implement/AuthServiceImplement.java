@@ -1,5 +1,6 @@
 package com.sarang.sarangback.service.implement;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,14 +15,17 @@ import com.sarang.sarangback.service.AuthService;
 
 import lombok.RequiredArgsConstructor;
 
+// AuthService 인터페이스를 상세 구현 한다.
 @Service
 @RequiredArgsConstructor
 public class AuthServiceImplement implements AuthService {
 
+    @Autowired
     private final UserRepository userRepository;
 
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
+    // 클라이언트의 요청데이터가 담긴 dto 받아서 처리한다.
     @Override
     public ResponseEntity<? super SignUpResponseDto> signUp(SignUpRequestDto dto) {
 
