@@ -1,0 +1,77 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+#auth-wrapper{
+    margin:0px;
+    /* padding: 100px 0px 150px; */
+    min-width: 1200px;
+    height: calc(100vh - 68px - 100px - 150px);
+    min-height: 900px;
+
+    /* 안에 있는 얘 중앙정렬을 위해 */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+
+    background-image: url(assets/image/bible-on-wood.jpg);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
+}
+
+.auth-container {
+    width: 1200px;
+    height: 100%;
+
+    display: grid;
+    /* 7:5의 비율로 중간에 78px의 갭이 잡혀서 */
+    grid-template-columns: 7fr 5fr;
+    column-gap: 78px;
+}
+
+.auth-jumbotron-box {
+    grid-column: 1/2;
+
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.auth-jumbotron-contents {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:15px;
+
+}
+.auth-logo-icon{
+   width:50px;
+   height:50px;
+   background-image: url(assets/image/auth-logo.png);
+   background-position: 50% 50%;
+   background-size: 100% 100%; 
+}
+.auth-jumbotron-text-box{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:2px;
+}
+
+.auth-jumbotron-text {
+    color: rgba(255,255,255,1);
+    font-family: 'GimhaeGaya';
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 140%;
+    line-height: 140%;
+    letter-spacing: -1.2px;
+    text-align: center;
+
+
+}
