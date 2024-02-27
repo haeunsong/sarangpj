@@ -9,7 +9,7 @@ interface Props {
   setValue: Dispatch<React.SetStateAction<string>>;
   error: boolean;
 
-  icon?: string;
+  icon?: "eye-light-off-icon" | "eye-light-on-icon" | "expand-right-light-icon";
   onButtonClick?: () => void;
 
   message?: string;
@@ -32,6 +32,7 @@ const InputBox = forwardRef<HTMLInputElement, Props>((props: Props, ref) => {
     onKeyDown(e);
   };
 
+  // render: Input Box 컴포넌트
   return (
     <div className="inputbox">
       <div className="inputbox-label">{label}</div>
@@ -47,9 +48,8 @@ const InputBox = forwardRef<HTMLInputElement, Props>((props: Props, ref) => {
           onKeyDown={onKeyDownHandler}
         />
         {onButtonClick !== undefined && (
-          <div className="icon-button">
+          <div className="icon-button" onClick={onButtonClick}>
             {icon !== undefined && <div className={`icon ${icon}`}></div>}
-            <div className="icon eye-light-off-icon"></div>
           </div>
         )}
       </div>
@@ -57,7 +57,6 @@ const InputBox = forwardRef<HTMLInputElement, Props>((props: Props, ref) => {
       {message !== undefined && (
         <div className="inputbox-message">{message}</div>
       )}
-      {"비밀번호는 8자 이상 입력해주세요."}
     </div>
   );
 });
