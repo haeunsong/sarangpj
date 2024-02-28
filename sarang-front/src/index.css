@@ -10,8 +10,9 @@
   font-weight: normal;
   font-style: normal;
 }
+
 body {
-  margin: 0;
+  margin: 0px;
   
   /* header 설정할 때 추가함 */
   min-width: 1440px;

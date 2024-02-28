@@ -8,7 +8,7 @@
     /* padding: 100px 0px 150px; */
     min-width: 1200px;
     height: calc(100vh - 68px - 100px - 150px);
-    min-height: 900px;
+    min-height: 900px; 
 
     /* 안에 있는 얘 중앙정렬을 위해 */
     display:flex;
@@ -25,7 +25,7 @@
 
 .auth-container {
     width: 1200px;
-    height: 100%;
+    height: 70%;
 
     display: grid;
     /* 7:5의 비율로 중간에 78px의 갭이 잡혀서 */
@@ -74,4 +74,74 @@
     text-align: center;
 
 
+}
+.auth-card {
+    grid-column: 2 / 3;
+    border-radius: 10px;
+    padding: 50px 50px 30px;
+
+    background-color: rgba(255,255,255,1);
+    box-shadow: 0px 4px 47px 0px rgba(0,0,0,0);
+}
+
+.auth-card-box {
+    height:70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.auth-card-top {
+    display:flex;
+    flex-direction: column;
+    gap: 40px;
+
+}
+.auth-card-title-box { 
+    display:flex;
+    justify-content: space-between;
+}
+.auth-card-title {
+    color: rgba(0,0,0,1);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 140%;
+
+}
+
+.auth-card-bottom {
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.auth-sign-in-error-box {
+    margin-bottom: -4px;
+}
+.auth-sign-in-error-message {
+    color: rgba(255,0,0,0.7);
+    font-weight: 400;
+    line-height: 140%;
+    font-size: 12px;
+
+    /* 줄바꿈 */
+    white-space: pre-wrap;
+
+}
+
+.auth-description-box {
+    display: flex;
+    justify-content: center;
+}
+
+.auth-description {
+    color: rgba(0,0,0,0.7);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+}
+.auth-description-link {
+    color: rgba(0,0,0,1);
+    cursor:pointer;
+    font-weight: 600;
 }
