@@ -89,6 +89,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap:50px;
 }
 
 .auth-card-top {
@@ -104,7 +105,14 @@
 .auth-card-title {
     color: rgba(0,0,0,1);
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 600;
+    line-height: 140%;
+
+}
+.auth-card-title {
+    color: rgba(0,0,0,0.7);
+    font-size: 24px;
+    font-weight: 600;
     line-height: 140%;
 
 }
@@ -112,6 +120,7 @@
 .auth-card-bottom {
     display:flex;
     flex-direction: column;
+    justify-content: space-between;
     gap:20px;
 }
 
