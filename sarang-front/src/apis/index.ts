@@ -1,6 +1,6 @@
 import { SignInRequestDto, SignUpRequestDto } from "./request/auth";
 import axios from 'axios';
-import { SignInResponseDto } from "./response/auth";
+import { SignInResponseDto, SignUpResponseDto } from "./response/auth";
 import { ResponseDto } from "./response";
 
 
@@ -45,5 +45,16 @@ export const signInRequest = async (requestBody: SignInRequestDto) => {
 }
 
 export const signUpRequest = async (requestBody:  SignUpRequestDto) => {
-
+    try {
+        const response = await axios.post(SIGN_UP_URL(),requestBody);
+        const responseBody: SignUpResponseDto = response.data;
+        return responseBody;
+    }catch(error){
+        if (axios.isAxiosError(error)) {
+            const responseBody: ResponseDto = error.response?.data;
+            return responseBody;
+        } else {
+            throw error; // AxiosError가 아닌 다른 타입의 오류는 다시 던짐
+        }
+    };
 }

@@ -122,6 +122,9 @@
 .expand-right-light-icon {
   background-image: url(assets/image/expand-right-light.png);
 }
+.expand-right-icon {
+  background-image: url(assets/image/expand-right.png);
+}
 .logo-light-icon {
   background-image: url(assets/image/logo-light.png);
 }
@@ -145,3 +148,11 @@
   background-image: url(assets/image/search-light.png);
 
 }
+.check-ring-light-icon{
+  background-image: url(assets/image/check-ring-light.png);
+}
+
+.check-round-fill-icon {
+  background-image: url(assets/image/check-round-fill.png);
+} 
+

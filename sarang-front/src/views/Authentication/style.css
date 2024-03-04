@@ -154,3 +154,66 @@
     cursor:pointer;
     font-weight: 600;
 }
+
+/* .auth-consent-box {
+    display: flex;  
+
+}
+.auth-consent-title {
+    margin: 2px;
+    flex-grow: 1; 
+}
+  
+  .auth-consent-link {
+    flex-grow: 0.05;
+    /*margin-top: 30px; 
+  } */
+/* .check-ring-light-icon{
+    background-image: url(assets/image/check-ring-light.png);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    width: 20px; height: 20px;
+}
+
+.check-round-fill-icon {
+    background-image: url(assets/image/check-round-fill.png);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    width: 20px; height: 20px;
+} */
+
+.auth-consent-box {
+    display: flex;
+    align-items: center;
+    gap:6px;
+}
+
+.auth-check-box {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+
+}
+
+.auth-consent-title {
+    color: rgba(0,0,0,0.7);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+}
+.auth-consent-error {
+    color: rgba(255,0,0,0.7);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+}
+.auth-consent-link {
+    color: rgba(0,0,0,0.7);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 140%;
+}
