@@ -6,12 +6,15 @@ import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 
+// jwt 발급해주는 provider
 @Component
+@Slf4j
 public class JwtProvider {
 
     @Value("${secret-key}")
@@ -27,11 +30,12 @@ public class JwtProvider {
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .setSubject(email).setIssuedAt(new Date()).setExpiration(expiredDate)
                 .compact();
+        log.info("error {}", jwt);
 
         return jwt;
     }
 
-    // 검증하기
+    // 검증해서 풀고 페이로드에 있는 서브젝트를 꺼내다가 줄꺼다.
     public String validate(String jwt) {
         Claims claims = null;
 

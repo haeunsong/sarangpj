@@ -31,7 +31,11 @@ const SIGN_UP_URL = () => `${API_DOMAIN}/auth/sign-up`;
 export const signInRequest = async (requestBody: SignInRequestDto) => {
     try {
         const response = await axios.post(SIGN_IN_URL(), requestBody);
+        // 유저에 정보를 받아오고 싶음
+        console.log("requestBody", response)
         const responseBody: SignInResponseDto = response.data;
+        console.log("responseBody", responseBody);
+        
         return responseBody;
     }catch(error){
         if (axios.isAxiosError(error)) {

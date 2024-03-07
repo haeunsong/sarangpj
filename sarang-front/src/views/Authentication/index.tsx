@@ -476,7 +476,7 @@ export default function Authentication() {
       }
 
       if (!isEmailPattern || !isCheckedPassword || !isEqualPassword) return;
-      console.log("넘어가란말야!");
+
       setPage(2);
     };
     // event handler: 개인정보 동의 체크박스 클릭 이벤트 처리
